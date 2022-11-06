@@ -14,14 +14,14 @@ const camera = new THREE.PerspectiveCamera(
   1000
 );
 const renderer = new THREE.WebGLRenderer();
-renderer.setClearColor(0xdfdfdf);
+renderer.setClearColor(0xabbbe0);
 renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize(500, 500);
 document.body.appendChild(renderer.domElement);
 
 // Add a polygon to the scene
-const geometry = new THREE.IcosahedronGeometry(1, 0);
-const material = new THREE.MeshStandardMaterial({ color: 0x2e8e39 });
+const geometry = new THREE.BoxGeometry(10, 10, 10, 4, 4, 4);
+const material = new THREE.MeshStandardMaterial({ color: 0xc736a3 });
 const poly = new THREE.Mesh(geometry, material);
 scene.add(poly);
 
@@ -35,7 +35,7 @@ line.material.transparent = false;
 scene.add(line);
 
 // Position our camera so we can see the shape
-camera.position.z = 5;
+camera.position.z = 25;
 
 // Add a directional light to the scene
 const directionalLight = new THREE.DirectionalLight(0xffffff, 0.7);
