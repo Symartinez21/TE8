@@ -34,6 +34,7 @@ var newMaterial = new THREE.MeshStandardMaterial({ color: 0x2E5939 });
 
 // Variable for GLTF data
 var mesh;
+var mesh2;
 
 // Load GLTF model, add material, and add it to the scene
 const loader = new GLTFLoader().load(
@@ -53,6 +54,30 @@ const loader = new GLTFLoader().load(
     mesh.scale.set(.8, .8, .8); // <-- change this to (1, 1, 1) for photogrammetery model
     // Add model to scene
     scene.add(mesh);
+  },
+  undefined,
+  function(error) {
+    console.error(error);
+  }
+);
+
+const loader2 = new GLTFLoader().load(
+  "../../assets/hamter.glb", // comment this line out and un comment the line below to swithc models
+  //"./assets/gourd_web.glb", //<-- photogrammetery model
+  function(gltf) {
+    // Scan loaded model for mesh and apply defined material if mesh is present
+    gltf.scene.traverse(function(child) {
+      if (child.isMesh) {
+        //child.material = newMaterial;
+      }
+    });
+    // set position and scale
+    mesh2 = gltf.scene;
+    mesh2.position.set(1, 0, 0);
+    mesh2.rotation.set(0, 180, 0);
+    mesh2.scale.set(.3, .3, .3); // <-- change this to (1, 1, 1) for photogrammetery model
+    // Add model to scene
+    scene.add(mesh2);
   },
   undefined,
   function(error) {
