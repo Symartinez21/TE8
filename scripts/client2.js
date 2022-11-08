@@ -49,7 +49,7 @@ const loader = new GLTFLoader().load(
     });
     // set position and scale
     mesh = gltf.scene;
-    mesh.position.set(0, 0, 0);
+    mesh.position.set(-2, 0, 0);
     mesh.rotation.set(0, 200, 0);
     mesh.scale.set(.8, .8, .8); // <-- change this to (1, 1, 1) for photogrammetery model
     // Add model to scene
